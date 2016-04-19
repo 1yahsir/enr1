@@ -17,7 +17,7 @@ void setup() {
   timer = new Timer(300);
   timer.start();
   noCursor();
-  f = createFont("Aria", 12, true);
+  f = createFont("Arial", 12, true);
 }
 void draw() {
   background(127, 255, 0);
@@ -31,9 +31,9 @@ void draw() {
     catcher.setLocation(mouseX, mouseY);
     catcher.display();
 
-    //Check the timer
+
     if (timer.isFinished()) {
-      //if we hit the end of array, start over
+
 
       if (totalDrops < drops.length) {
         totalDrops++;
@@ -57,7 +57,7 @@ void draw() {
           }
         }
 
-        //if statement for intersection
+
         if (catcher.intersect(drops[i])) {
 
           drops[i].finished();
