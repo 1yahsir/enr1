@@ -3,13 +3,11 @@ Drop[] drops;
 Timer timer;
 int totalDrops = 0;
 boolean gameOver = false;
-
 int score = 0;
 int level = 1;
 int lives = 18;
 int levelCounter = 0;
 PFont f;
-
 void setup() {
   size(640, 360);
   catcher = new Catcher(32);
@@ -30,24 +28,17 @@ void draw() {
   } else {
     catcher.setLocation(mouseX, mouseY);
     catcher.display();
-
-
     if (timer.isFinished()) {
-
-
       if (totalDrops < drops.length) {
         totalDrops++;
         drops[totalDrops]= new Drop();
       }
       timer.start();
     }
-
-
     for (int i=0; i < totalDrops; i++) {
       if (!drops[i].finished) {
         drops[i].move();
         drops[i].display();
-
         if (drops[i].reachedBottom()) {
           levelCounter++;
           drops[i].finished();
@@ -56,10 +47,7 @@ void draw() {
             gameOver = true;
           }
         }
-
-
         if (catcher.intersect(drops[i])) {
-
           drops[i].finished();
           levelCounter++;
           score++;
@@ -77,7 +65,6 @@ void draw() {
     fill(0);
     text("lives left:" + lives, 10, 20);
     rect(10, 24, lives*300, 20);
-
     text("level:" + level, 300, 20);
     text("score:" + score, 300, 40);
   }
