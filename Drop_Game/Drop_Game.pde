@@ -23,8 +23,11 @@ void draw() {
   background(127, 255, 0);
 
   if (gameOver) {
+    textFont(f, 48);
+    textAlign(CENTER);
+    fill(255, 0, 0);
+    text("GAME OVER", width/2, height/2);
   } else {
-
     catcher.setLocation(mouseX, mouseY);
     catcher.display();
 
@@ -66,9 +69,16 @@ void draw() {
     if (levelCounter >= drops.length) {
       level++;
       levelCounter=0;
-      lives=10;
+      lives=lives+1;
       totalDrops=0;
       timer.setTime(constrain(300-level*25, 0, 300));
     }
+    textFont(f, 14);
+    fill(0);
+    text("lives left:" + lives, 10, 20);
+    rect(10, 24, lives*300, 20);
+
+    text("level:" + level, 300, 20);
+    text("score:" + score, 300, 40);
   }
 }
